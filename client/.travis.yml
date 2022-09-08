@@ -7,7 +7,7 @@ before_install:
   - docker build -t gconfiac/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true gconfiac/react-test npm test
+  - docker run -e CI=true gconfiac/react-test npm run test
 
 after_success:
   - docker build -t gconfiac/multi-client ./client
