@@ -4,20 +4,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t gconfiac/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t gregoryconfiac/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true gconfiac/react-test npm run test
+  - docker run -e CI=true gregoryconfiac/react-test npm run test
 
 after_success:
-  - docker build -t gconfiac/multi-client ./client
-  - docker build -t gconfiac/multi-nginx ./nginx
-  - docker build -t gconfiac/multi-server ./server
-  - docker build -t gconfiac/multi-worker ./worker
+  - docker build -t gregoryconfiac/multi-client ./client
+  - docker build -t gregoryconfiac/multi-nginx ./nginx
+  - docker build -t gregoryconfiac/multi-server ./server
+  - docker build -t gregoryconfiac/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push gconfiac/multi-client
-  - docker push gconfiac/nginx
-  - docker push gconfiac/server
-  - docker push gconfiac/worker
+  - docker push gregoryconfiac/multi-client
+  - docker push gregoryconfiac/nginx
+  - docker push gregoryconfiac/server
+  - docker push gregoryconfiac/worker
