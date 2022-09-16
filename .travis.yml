@@ -18,6 +18,6 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push gregoryconfiac/multi-client
-  - docker push gregoryconfiac/nginx
-  - docker push gregoryconfiac/server
-  - docker push gregoryconfiac/worker
+  - docker push gregoryconfiac/multi-nginx
+  - docker push gregoryconfiac/multi-server
+  - docker push gregoryconfiac/multi-worker
