@@ -21,3 +21,15 @@ after_success:
   - docker push gregoryconfiac/multi-nginx
   - docker push gregoryconfiac/multi-server
   - docker push gregoryconfiac/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-central-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-ca-central-1-773267386500
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
