@@ -14,9 +14,7 @@ after_success:
   - docker build -t gregoryconfiac/multi-nginx ./nginx
   - docker build -t gregoryconfiac/multi-server ./server
   - docker build -t gregoryconfiac/multi-worker ./worker
-  # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Take those images and push them to docker hub
   - docker push gregoryconfiac/multi-client
   - docker push gregoryconfiac/multi-nginx
   - docker push gregoryconfiac/multi-server
@@ -24,7 +22,7 @@ after_success:
 
 deploy:
   provider: elasticbeanstalk
-  region: 'us-central-11'
+  region: 'us-central-1'
   app: 'multi-docker'
   env: 'MultiDocker-env'
   bucket_name: 'elasticbeanstalk-ca-central-1-773267386500'
